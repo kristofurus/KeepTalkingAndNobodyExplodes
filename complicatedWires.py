@@ -34,71 +34,32 @@ while True:
         hasParallelPort = False
         break
 
+cutArray = [
+    True, False, True, moreThanTwoBatteries, isLastSerialNumberDigitEven, hasParallelPort, False, hasParallelPort,
+    isLastSerialNumberDigitEven, moreThanTwoBatteries, True, moreThanTwoBatteries, False, isLastSerialNumberDigitEven,
+    hasParallelPort, False
+]
+
 while True:
 
-    hasSymbol = False
-    isLedOn = False
-    isRed = False
-    isBlue = False
+    hasSymbol = 0
+    isLedOn = 0
+    isRed = 0
+    isBlue = 0
     text = input("Podaj r(czerwony) b(niebieski) s(symbol) l(LED) e(koniec): ").lower()
     if "r" in text:
-        isRed = True
+        isRed = 1
     if "b" in text:
-        isBlue = True
+        isBlue = 1
     if "s" in text:
-        hasSymbol = True
+        hasSymbol = 1
     if "l" in text:
-        isLedOn = True
+        isLedOn = 1
     if "e" in text:
         break
 
-    if isRed and isBlue and hasSymbol and isLedOn:
-        cut = False
-
-    elif isRed and isBlue and hasSymbol and not isLedOn:
-        cut = hasParallelPort
-
-    elif isRed and isBlue and not hasSymbol and isLedOn:
-        cut = isLastSerialNumberDigitEven
-
-    elif isRed and isBlue and not hasSymbol and not isLedOn:
-        cut = False
-
-    elif isRed and not isBlue and hasSymbol and isLedOn:
-        cut = moreThanTwoBatteries
-
-    elif isRed and not isBlue and hasSymbol and not isLedOn:
-        cut = True
-
-    elif isRed and not isBlue and not hasSymbol and isLedOn:
-        cut = moreThanTwoBatteries
-
-    elif isRed and not isBlue and not hasSymbol and not isLedOn:
-        cut = isLastSerialNumberDigitEven
-
-    elif not isRed and isBlue and hasSymbol and isLedOn:
-        cut = hasParallelPort
-
-    elif not isRed and isBlue and hasSymbol and not isLedOn:
-        cut = False
-
-    elif not isRed and isBlue and not hasSymbol and isLedOn:
-        cut = hasParallelPort
-
-    elif not isRed and isBlue and not hasSymbol and not isLedOn:
-        cut = isLastSerialNumberDigitEven
-
-    elif not isRed and not isBlue and hasSymbol and isLedOn:
-        cut = moreThanTwoBatteries
-
-    elif not isRed and not isBlue and hasSymbol and not isLedOn:
-        cut = True
-
-    elif not isRed and not isBlue and not hasSymbol and isLedOn:
-        cut = False
-
-    elif not isRed and not isBlue and not hasSymbol and not isLedOn:
-        cut = True
+    idx = isRed*2**3 + isBlue*2**2 + hasSymbol*2 + isLedOn
+    cut = cutArray[idx]
 
     if cut:
         print("Cut")
