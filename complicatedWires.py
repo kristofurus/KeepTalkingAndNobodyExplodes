@@ -7,7 +7,7 @@ cut = True
 # last digit is even
 while True:
     answer = input("Czy ostatnia cyfra numeru seryjnego jest parzysta? ").lower()
-    if answer == "t":
+    if answer == "t" or answer == "y":
         isLastSerialNumberDigitEven = True
         break
     elif answer == "f" or answer == "n":
@@ -17,7 +17,7 @@ while True:
 # more than two batteries?
 while True:
     answer = input("Czy ma więcej niż 2 baterie? ").lower()
-    if answer == "t":
+    if answer == "t" or answer == "y":
         moreThanTwoBatteries = True
         break
     elif answer == "f" or answer == "n":
@@ -27,7 +27,7 @@ while True:
 # parallel port
 while True:
     answer = input("Czy ma port równoległy? ").lower()
-    if answer == "t":
+    if answer == "t" or answer == "y":
         hasParallelPort = True
         break
     elif answer == "f" or answer == "n":
